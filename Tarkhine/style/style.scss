@@ -1,0 +1,447 @@
+$contianer:32px 108px;
+$subTextColor:#717171;
+$textColor:#fff;
+@mixin flex($justify,$alignItems,$direction){
+    display: flex;
+    justify-content:$justify ;
+    align-items: $alignItems;
+    flex-direction: $direction;
+    flex-wrap: wrap;
+}
+@mixin livePaje{
+    color: #417F56 ;
+    font-weight: 700;
+    font-family: E-regular;
+    border-bottom: $subTextColor solid 1px;
+    padding: 2px;
+}
+@mixin about-item{
+    position: relative;
+    z-index: 4;
+}
+@mixin dropDown{
+    @include flex(flex-start,flex-start ,column );
+    position: relative;
+}
+@mixin dropDown__content{
+    width: 140px;
+    height: 160px;
+    border-radius: 4px 4px 0px 0px;
+    background:  #FFF;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    position: absolute;
+    top: 30px;
+    z-index: 2;
+    @include flex(flex-start,flex-start ,column );
+    gap: 8px ;
+    display: none;
+} 
+
+main{
+    direction: rtl;
+    button{
+        cursor: pointer;
+    }
+    a{
+        text-decoration: none;
+    }
+    .hero{
+        @include flex(space-evenly,center,column );
+        header{
+            nav.responsiveNavbar{
+                width: 100%;
+                display: none;
+                @media only screen and (max-width: 1160px){
+                    @include flex(center,center,row);
+                }
+            }
+            nav{
+                @include flex(space-around,center,row);
+                padding: $contianer;
+                @media only screen and (max-width: 1160px){
+                    display: none;
+                }
+                .center-part{
+                    ul{
+                        @include flex(space-evenly,center,row);
+                        width: 808px;
+                        height: 33px;
+                        a{
+                            @include flex(center,center,row);
+                            font-family: E-regular;
+                            color: $subTextColor;
+                            font-weight: 400;
+                        }
+                        .live{
+                            @include livePaje;
+                        }
+                        li{
+                            gap: 4px;
+                        }
+                        li:hover{
+                            border-bottom: $subTextColor solid 1px;
+                        }
+                        .dropDown{
+                            @include dropDown;
+                            .dropDown__content{
+                                @include dropDown__content;
+                            }
+                        }
+                        .dropDown:hover .dropDown__content{
+                            display: flex;
+                        }
+                    }
+                }
+                .left-part{
+                    @include flex(center,center ,row );
+                    gap: 8px;
+                    .icons{
+                        height: 40px;
+                        padding: 8px;
+                        border-radius: 4px;
+                        background:  #E5F2E9;
+                    }
+                    .icons--dropDown{
+                        @include dropDown;
+                        .icons--dropDown__content{
+                            @include dropDown__content;
+                            top: 40px;
+                            left: 2px;
+                            li{
+                                margin-top: 1px;
+                                a{
+                                    @include flex(center,center ,row );
+                                    font-family: E-regular;
+                                    color: $subTextColor;
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+                    }
+                    .icons--dropDown:hover .icons--dropDown__content{
+                        display: flex;
+                    }
+                }    
+            }
+            .carousel{
+                overflow: hidden;
+                @media only screen and (max-width: 976px){
+                    display: none;
+                }
+                .carousel-indicators{
+                    width: 154px;
+                    height: 35px;
+                    margin: 0 44.5% -0.5% 0;
+                    border-top-left-radius: 25px;
+                    border-top-right-radius: 25px;
+                    background-color: #fff;
+                    
+                    button{
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        background-color: #ADADAD;
+                    }
+                    .active{
+                        background-color: #417F56 ;
+                    }
+                }
+                .carousel-inner{
+                    .carousel-item{
+                        .carousel-caption{
+                            @include flex(center,center,column);
+                            margin-bottom: 4%;
+                            h5{
+                                font-family:E-extrabold;
+                                font-size: 40px;
+                                font-style: normal;
+                                font-weight: 700;
+                                line-height: 140%;
+                                margin-bottom: 5%;
+                            }
+                            button{
+                                width: 184px;
+                                height: 40px;
+                                padding: 8px 16px;
+                                border-radius: 8px;
+                                border: none;
+                                background:#417F56;
+                                color: #FFF;
+                                font-family: E-semibold;
+                                font-weight: 500;
+                                font-size: 16px;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        h2{
+            font-family: E-regular;
+            font-weight: 700;
+            margin-top: 37px;
+        }
+        .meno-contianer{
+            @include flex(space-around,center,row);
+            width: 100%;
+            // min-height: 850px;
+            margin-top: 150px;
+            padding: $contianer;
+            @media only screen and (max-width: 1363px){
+                min-height: 850px;
+            }
+            @media only screen and (max-width: 790px){
+                min-height: 1400px;
+                @include flex(space-between,center,column);
+            }
+            .meno{
+                height: 160px;
+                width: 287px;
+                gap: 18px;
+                border-radius: 8px;
+                border: 1px solid var(--green-primary, #417F56);
+                background: var(--green-primary, #417F56);
+                box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.10), 0px 4px 4px 0px rgba(0, 0, 0, 0.09), 0px 9px 5px 0px rgba(0, 0, 0, 0.05), 0px 16px 6px 0px rgba(0, 0, 0, 0.01), 0px 25px 7px 0px rgba(0, 0, 0, 0.00);
+                img{
+                    position: relative;
+                    bottom: 130px;
+                    left: -9px ;
+                }
+                .drink{
+                    position: relative;
+                    bottom: 200px;
+                }
+                button{
+                    width: 145px;
+                    height: 48px;
+                    padding: 8px 16px;
+                    font-size: 20px;
+                    font-family: E-regular;
+                    font-weight: 400;
+                    color: #353535;
+                    border: none;
+                    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.10), 0px 4px 4px 0px rgba(0, 0, 0, 0.09), 0px 9px 5px 0px rgba(0, 0, 0, 0.05), 0px 16px 6px 0px rgba(0, 0, 0, 0.01), 0px 25px 7px 0px rgba(0, 0, 0, 0.00);
+                    border-radius: 4px;
+                    background: var(--neutral-e-1-e-1-e-1, #F9F9F9);
+                    position: relative;
+                    bottom: 130px;
+                    right: 60px;
+                }
+                .drink--button{
+                    position: relative;
+                    bottom: 180px;
+                }
+            }
+        }
+
+    }
+    .content{
+        @include flex(center,center ,column );
+        .aboutContianer{
+            width: 100vw;
+            min-height: 390px;
+            @include flex(space-around,center ,row);
+            margin-top: 80px;
+            padding: 48px 7.5%;
+            color: #fff;
+            background-image: url(../image/about.png);
+
+            @media only screen and (max-width: 1097px){
+                @include flex(center,center ,column );
+            }
+            @media only screen and (max-width: 790px){
+                padding: 0;
+            }
+
+            .aboutContianer__rightPaet{
+                width: 570px;
+                height: 294px;
+                @include flex(space-evenly,flex-start,column );
+
+                @media only screen and (max-width: 1097px){
+                    @include flex(center,center ,column );
+                }
+
+                h2{
+                    font-family: E-bold;
+                }
+                p{
+                    font-family: E-regular;
+                    font-size: 20px;
+                    font-weight: 400;
+                    line-height: 180%;
+                    @media only screen and (max-width: 1097px){
+                        text-align: center;
+                    }
+                }
+                button{
+                    width: 184px;
+                    height: 40px;
+                    background-color: #ffffff00;
+                    color: #fff;
+                    padding: 8px 16px;
+                    border-radius: 4px;
+                    border: 1px solid #FFF;
+                    align-self: flex-end;
+                    @include flex(center,center,row );
+                    font-family: E-regular;
+                    font-size: 16px;
+                    font-weight: 500;
+                    @media only screen and (max-width: 1097px){
+                        align-self: center;
+                    }
+                }
+            }
+            .aboutContianer__leftPart{
+                width: 33vw;
+                @include flex(center,center,row);
+                gap: 24px;
+                .aboutContianer__leftPart--items{
+                    width: 184px;
+                    height: 136px;
+                    @include flex(space-evenly,center,column);
+                    font-family:E-regular;
+                    font-size: 18px;
+                    font-weight: 400;
+                }
+            }
+
+        }
+        .cards-main-titel{
+            font-family: E-bold;
+            font-weight: 700;
+            margin-top: 80px;
+            color: #353535;
+        }
+        .cardCotianer{
+            width: 100%;
+            @include flex(space-evenly,center ,row );
+            @media only screen and (max-width: 600px){
+                @include flex(space-evenly,center ,column); 
+            }
+            .cardCotianer__cards{
+                width: 288px;
+                height: 344px;
+                @include flex(space-between,center,column);
+                margin-top: 50px;
+                border-radius: 8px;
+                border: 1px solid #CBCBCB;
+                background: #FFF;
+                overflow: hidden;
+                h3{
+                    font-family: E-bold;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color:#353535;
+                    text-align: center;
+                }
+                p{
+                    font-family:E-extralight ;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color:#717171;
+                    text-align: center;
+                    
+                }
+                button{
+                    width: 128px;
+                    height: 32px;
+                    @include flex(center,center,row );
+                    padding: 8px;
+                    border-radius: 4px;
+                    border: 1px solid #315F41;
+                    color: #315F41;
+                    background-color: #ffffff00;
+                    text-align: center;
+                    font-family: E-regular;
+                    font-size: 12px;
+                    font-weight: 400;
+                    display: none;
+                }
+            }
+        }
+    }
+    footer{
+        min-height: 319px;
+        padding: 32px 7.5%;
+        @include flex(space-around,center,row);
+        flex-wrap: nowrap;
+        background-image: url(../image/Footer.png);
+        margin-top: 48px;
+        .righet-part{
+            width: 50%;
+            height: 78%;
+            padding: -1%;
+            color: $textColor;
+            @include flex(space-around,center ,row);
+            @media only screen and (max-width: 790px){
+                display: none;
+            }
+            ul{
+                width: 184px;
+                @include flex(flex-start,center,column);
+                font-family: E-regular;
+                span{
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+                li{
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin: 10%;
+                    
+                }
+            }
+        }
+        .left-part{
+            color: #fff;  
+            font-family: E-bold;          
+            form{
+                width: 600px;
+                @include flex(flex-start,center,row);
+                // flex-wrap: nowrap;
+                span.inputs{
+                    @include flex(flex-start,center,column);
+                    input{
+                        width: 276px;
+                        height: 40px;
+                        border: solid 1px #717171;
+                        border-radius: 5px;
+                        padding: 1%;
+                        margin: 7px;
+                        color: $textColor;
+                        background-color: #315f4100;
+                    }
+                }
+                span.masseg{
+                    textarea{
+                        width: 286px;
+                        height: 144px;
+                        border: solid 1px #717171;
+                        border-radius: 5px;
+                        padding: 1%;
+                        margin: 7px;
+                        background-color: #315f4100;
+                    }
+                }
+                button{
+                    width: 183px;
+                    height: 40px;
+                    margin-right: 67.3%;
+                    padding: 8px 16px;
+                    border-radius: 4px;
+                    border: 1px solid #717171;
+                    background-color: #ffffff00;
+                    color: $subTextColor;
+                    font-family: E-regular;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 500;
+                }
+            }
+
+        }
+    }
+}

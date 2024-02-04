@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "npm": "^10.2.4",
+    "sass": "^1.69.5"
+  },
+  "scripts": {
+    "start": "sass --watch ./style/main.scss ./style/style.css"
+  }
+}
